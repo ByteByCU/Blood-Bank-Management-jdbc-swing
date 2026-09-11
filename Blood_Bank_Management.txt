@@ -1,0 +1,149 @@
+CREATE TABLE PATIENTS (
+    PATIENT_ID NUMBER NOT NULL,
+    NAME VARCHAR2(100) NOT NULL,
+    AGE NUMBER(3),
+    GENDER VARCHAR2(10),
+    BLOOD_GROUP VARCHAR2(5) NOT NULL,
+    PHONE VARCHAR2(15),
+    ADDRESS VARCHAR2(200),
+    USERNAME VARCHAR2(50) NOT NULL,
+    PASSWORD VARCHAR2(100) NOT NULL
+);
+
+INSERT INTO PATIENTS
+VALUES (101, 'Anjali Menon', 28, 'Female', 'O+', '9876543210',
+        'Thrissur', 'anjali', 'anjali123');
+
+INSERT INTO PATIENTS
+VALUES (102, 'Rahul Thomas', 35, 'Male', 'A+', '9876543211',
+        'Kochi', 'rahul', 'rahul123');
+
+INSERT INTO PATIENTS
+VALUES (103, 'Meera Joseph', 22, 'Female', 'B+', '9876543212',
+        'Ernakulam', 'meera', 'meera123');
+
+INSERT INTO PATIENTS
+VALUES (104, 'Arjun Nair', 30, 'Male', 'AB+', '9876543213',
+        'Kozhikode', 'arjun', 'arjun123');
+
+INSERT INTO PATIENTS
+VALUES (105, 'Sneha Kumar', 26, 'Female', 'A-', '9876543214',
+        'Palakkad', 'sneha', 'sneha123');
+
+INSERT INTO PATIENTS
+VALUES (106, 'Shreya Godson', 19, 'FEMALE', 'O-', '9447827600',
+        'Ernakulam', 'shreya', 'shreya123');
+
+INSERT INTO PATIENTS
+VALUES (109, 'Amal Jude', 21, 'MALE', 'B-', '7856234510',
+        'Pala', 'amal', 'amal123');
+
+INSERT INTO PATIENTS
+VALUES (107, 'Norah Grace', 19, 'FEMALE', 'B+', '8590101770',
+        'Vaduthala', 'norah', 'norah123');
+
+INSERT INTO PATIENTS
+VALUES (108, 'Sayuj PS', 20, 'MALE', 'A+', '8590101222',
+        'Wayanad', 'sayuj', 'sayuj123');
+
+COMMIT;
+
+CREATE TABLE DONORS (
+    DONOR_ID NUMBER NOT NULL,
+    NAME VARCHAR2(100) NOT NULL,
+    AGE NUMBER(3),
+    GENDER VARCHAR2(10),
+    BLOOD_GROUP VARCHAR2(5) NOT NULL,
+    PHONE VARCHAR2(15),
+    EMAIL VARCHAR2(100),
+    ADDRESS VARCHAR2(200)
+);
+
+INSERT INTO DONORS
+VALUES (201, 'Vishnu Raj', 25, 'Male', 'O+', '9876543220',
+        'vishnu@gmail.com', 'Thrissur');
+
+INSERT INTO DONORS
+VALUES (202, 'Neha Thomas', 24, 'Female', 'A+', '9876543221',
+        'neha@gmail.com', 'Kochi');
+
+INSERT INTO DONORS
+VALUES (203, 'Akhil Menon', 29, 'Male', 'B+', '9876543222',
+        'akhil@gmail.com', 'Ernakulam');
+
+INSERT INTO DONORS
+VALUES (204, 'Diya Joseph', 27, 'Female', 'AB+', '9876543223',
+        'diya@gmail.com', 'Kozhikode');
+
+INSERT INTO DONORS
+VALUES (205, 'Rohan Kumar', 31, 'Male', 'A-', '9876543224',
+        'rohan@gmail.com', 'Palakkad');
+
+INSERT INTO DONORS
+VALUES (207, 'Sreya Santhosh', 21, 'FEMALE', 'AB+', '9678342190',
+        'sreya@gmail.com', 'Thrissur');
+
+INSERT INTO DONORS
+VALUES (206, 'Akhil Krishna', 20, 'Male', 'AB-', '9447827600',
+        'akhil@gmail.com', 'Cherthala');
+
+COMMIT;
+
+CREATE TABLE BLOOD_INVENTORY (
+    INVENTORY_ID NUMBER NOT NULL,
+    BLOOD_GROUP VARCHAR2(5) NOT NULL,
+    UNITS_AVAILABLE NUMBER(5) NOT NULL,
+    EXPIRY_DATE DATE
+);
+
+INSERT INTO BLOOD_INVENTORY
+VALUES (401, 'O+', 15, TO_DATE('05-10-2026', 'DD-MM-YYYY'));
+
+INSERT INTO BLOOD_INVENTORY
+VALUES (402, 'A+', 10, TO_DATE('06-10-2026', 'DD-MM-YYYY'));
+
+INSERT INTO BLOOD_INVENTORY
+VALUES (403, 'B+', 10, TO_DATE('07-10-2026', 'DD-MM-YYYY'));
+
+INSERT INTO BLOOD_INVENTORY
+VALUES (404, 'AB+', 5, TO_DATE('10-10-2026', 'DD-MM-YYYY'));
+
+INSERT INTO BLOOD_INVENTORY
+VALUES (405, 'AB+', 6, TO_DATE('12-10-2026', 'DD-MM-YYYY'));
+
+COMMIT;
+
+CREATE TABLE BLOOD_REQUESTS (
+    REQUEST_ID NUMBER NOT NULL,
+    PATIENT_ID NUMBER NOT NULL,
+    BLOOD_GROUP VARCHAR2(5) NOT NULL,
+    UNITS_REQUIRED NUMBER(3) NOT NULL,
+    REQUEST_DATE DATE NOT NULL,
+    STATUS VARCHAR2(20)
+);
+
+INSERT INTO BLOOD_REQUESTS
+VALUES (1, 101, 'O+', 2,
+        TO_DATE('11-09-2026', 'DD-MM-YYYY'), 'PENDING');
+
+INSERT INTO BLOOD_REQUESTS
+VALUES (2, 101, 'O+', 1,
+        TO_DATE('11-09-2026', 'DD-MM-YYYY'), 'APPROVED');
+
+INSERT INTO BLOOD_REQUESTS
+VALUES (3, 102, 'A+', 1,
+        TO_DATE('11-09-2026', 'DD-MM-YYYY'), 'PENDING');
+
+INSERT INTO BLOOD_REQUESTS
+VALUES (4, 103, 'B+', 3,
+        TO_DATE('11-09-2026', 'DD-MM-YYYY'), 'PENDING');
+
+INSERT INTO BLOOD_REQUESTS
+VALUES (5, 104, 'AB+', 2,
+        TO_DATE('11-09-2026', 'DD-MM-YYYY'), 'APPROVED');
+
+INSERT INTO BLOOD_REQUESTS
+VALUES (6, 105, 'A-', 1,
+        TO_DATE('11-09-2026', 'DD-MM-YYYY'), 'COMPLETED');
+
+COMMIT;
